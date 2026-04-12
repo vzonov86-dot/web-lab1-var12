@@ -1,0 +1,10 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Добавление шума к изображению{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Добавление шума к изображению</h1>
+    <p>Загрузите изображение и задайте уровень шума (0 – 1).</p>
+    {{ wtf.quick_form(form, method='post', enctype="multipart/form-data") }}
+</div>
+{% endblock %}
