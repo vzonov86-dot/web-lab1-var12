@@ -1,0 +1,30 @@
+name: Flask CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python 3.7.6
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.7.6
+
+    - name: Install dependencies
+      run: |
+        pip install -r flaskapp/requirements.txt
+
+    - name: Run tests
+      run: |
+        chmod +x flaskapp/st.sh
+        cd flaskapp
+        ./st.sh
